@@ -16,6 +16,9 @@ import ProductProvider from "./User.Context/product.context";
 import Checkout from "./padg/Checkout/Checkout";
 import Orders from "./padg/Orders/Orders";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ForgetPassword from "./padg/ForgetPassword/ForgetPassword";
+import ResetCode from "./padg/ResetCode/ResetCode";
+import ResetPassword from "./padg/ResetPassword/ResetPassword";
 function App() {
   const router = createBrowserRouter([
     {
@@ -43,6 +46,9 @@ function App() {
       element: <Layout />,
       children: [
         { path: "regester", element: <Regester /> },
+        { path: "forget", element: <ForgetPassword /> },
+        { path: "resetpassword", element: <ResetPassword /> },
+        { path: "reset", element: <ResetCode /> },
         { path: "login", element: <Login /> },
       ],
     },

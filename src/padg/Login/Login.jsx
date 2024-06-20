@@ -2,7 +2,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { userContext } from "../../User.Context/User.context";
 
@@ -114,6 +114,12 @@ export default function Login() {
               ""
             )}
           </div>
+          <NavLink
+            className="list-none block text-lg w-fit text-primary"
+            to="/auth/forget"
+          >
+            Forgot Password?
+          </NavLink>
           <button
             type="submit"
             className="bg-primary py-2 px-5 text-white text-xl rounded-lg"
