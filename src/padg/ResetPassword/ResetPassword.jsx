@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -37,6 +38,10 @@ export default function ResetPassword() {
   });
   return (
     <>
+      <Helmet>
+        <title>Reset Password</title>
+        <meta name="description" content="Reset password page" />
+      </Helmet>
       <form
         onSubmit={formik.handleSubmit}
         className="flex flex-col gap-3 px-3 md:px-0"

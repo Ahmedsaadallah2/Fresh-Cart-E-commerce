@@ -5,6 +5,7 @@ import { productContext } from "../../User.Context/product.context";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function Checkout(values) {
   const { token } = useContext(userContext);
@@ -79,6 +80,10 @@ export default function Checkout(values) {
   });
   return (
     <>
+      <Helmet>
+        <title>Checkout</title>
+        <meta name="description" content="Home component" />
+      </Helmet>
       <h2 className="p-2 md:p-0 text-3xl mb-5">Shipping Address</h2>
       <form className="p-2 md:p-0" onSubmit={formik.handleSubmit}>
         <input

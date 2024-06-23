@@ -5,6 +5,7 @@ import Loading from "../../component/Loading/Loading";
 import SliderProduct from "../../component/SliderProduct/SliderProduct";
 import SlideCategory from "../../component/SlideCategory/SlideCategory";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 export default function Home() {
   async function getProduct() {
@@ -23,6 +24,10 @@ export default function Home() {
   }
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+        <meta name="description" content="Home component" />
+      </Helmet>
       <SliderProduct />
       <SlideCategory />
       <div className=" grid grid-cols-12 gap-6">

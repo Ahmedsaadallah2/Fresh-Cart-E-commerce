@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../../component/Loading/Loading";
 import ReactImageGallery from "react-image-gallery";
 import { productContext } from "../../User.Context/product.context";
+import { Helmet } from "react-helmet";
 
 export default function ProducDetalis() {
   const [detalis, setDetalis] = useState(null);
@@ -30,6 +31,10 @@ export default function ProducDetalis() {
         <Loading />
       ) : (
         <div className=" grid grid-cols-12 gap-6">
+          <Helmet>
+            <title>{detalis.title}</title>
+            <meta name="description" content="product Detalis component" />
+          </Helmet>
           <div className="col-span-12 md:col-span-6 lg:col-span-3">
             <ReactImageGallery
               items={detalisImage}

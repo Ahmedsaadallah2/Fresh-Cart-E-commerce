@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
@@ -85,6 +86,10 @@ export default function Regester() {
   console.log(formik);
   return (
     <>
+      <Helmet>
+        <title>Regester</title>
+        <meta name="description" content="Regester page" />
+      </Helmet>
       <section className="p-4 md:p-0">
         <div className=" flex items-center gap-4 mb-4 text-primary">
           <i className="fa-solid fa-user text-2xl"></i>

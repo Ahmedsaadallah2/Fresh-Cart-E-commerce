@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { userContext } from "../../User.Context/User.context";
+import { Helmet } from "react-helmet";
 
 export default function Login() {
   const validationSchema = yup.object({
@@ -64,6 +65,10 @@ export default function Login() {
   console.log(formik);
   return (
     <>
+      <Helmet>
+        <title>Login</title>
+        <meta name="description" content="Login Pages" />
+      </Helmet>
       <section className="p-4 md:p-0">
         <div className=" flex items-center gap-4 mb-4 text-primary">
           <i className="fa-solid fa-user text-2xl"></i>

@@ -3,6 +3,7 @@ import { userContext } from "../../User.Context/User.context";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import Loading from "../../component/Loading/Loading";
+import { Helmet } from "react-helmet";
 
 export default function Orders() {
   const { token } = useContext(userContext);
@@ -24,6 +25,10 @@ export default function Orders() {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>Your Orders</title>
+        <meta name="description" content="Orders component" />
+      </Helmet>
       {!order ? (
         <Loading />
       ) : (

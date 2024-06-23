@@ -1,6 +1,7 @@
 import axios from "axios";
 import Loading from "../../component/Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 export default function Brands() {
   async function getBrand() {
     const option = {
@@ -19,6 +20,10 @@ export default function Brands() {
   }
   return (
     <>
+      <Helmet>
+        <title>Brands</title>
+        <meta name="description" content="Brands component" />
+      </Helmet>
       <div className="grid grid-cols-12 gap-4">
         {data.data.data.map((brands) => (
           <div

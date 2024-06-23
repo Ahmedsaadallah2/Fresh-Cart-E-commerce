@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -36,6 +37,10 @@ export default function ResetCode() {
 
   return (
     <>
+      <Helmet>
+        <title>Reset Code</title>
+        <meta name="description" content="Reset code page" />
+      </Helmet>
       <form className="px-3 md:px-0" onSubmit={formik.handleSubmit}>
         <input
           value={formik.values.resetCode}

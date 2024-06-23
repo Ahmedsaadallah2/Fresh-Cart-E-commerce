@@ -2,12 +2,17 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { productContext } from "../../User.Context/product.context";
 import Loading from "../../component/Loading/Loading";
+import { Helmet } from "react-helmet";
 
 export default function Cart() {
   const { cartInfo, removeCart, ubdateCount, clearAll } =
     useContext(productContext);
   return (
     <>
+      <Helmet>
+        <title>Cart Info</title>
+        <meta name="description" content="Cart component" />
+      </Helmet>
       {cartInfo === null ? (
         <Loading />
       ) : (

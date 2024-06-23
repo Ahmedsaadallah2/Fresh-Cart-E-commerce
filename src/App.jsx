@@ -19,6 +19,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ForgetPassword from "./padg/ForgetPassword/ForgetPassword";
 import ResetCode from "./padg/ResetCode/ResetCode";
 import ResetPassword from "./padg/ResetPassword/ResetPassword";
+import WishListProvider from "./User.Context/wish.context";
+import WishList from "./padg/WishList /WishList";
 function App() {
   const router = createBrowserRouter([
     {
@@ -35,6 +37,7 @@ function App() {
         { path: "products", element: <Products /> },
         { path: "/product/:id", element: <ProducDetalis /> },
         { path: "/cart", element: <Cart /> },
+        { path: "/wishlist", element: <WishList /> },
         { path: "/checkout", element: <Checkout /> },
         { path: "/allorders", element: <Orders /> },
         { path: "brands", element: <Brands /> },
@@ -60,8 +63,10 @@ function App() {
       <QueryClientProvider client={newClint}>
         <UserProvider>
           <ProductProvider>
-            <RouterProvider router={router}></RouterProvider>
-            <Toaster />
+            <WishListProvider>
+              <RouterProvider router={router}></RouterProvider>
+              <Toaster />
+            </WishListProvider>
           </ProductProvider>
         </UserProvider>
       </QueryClientProvider>

@@ -74,6 +74,16 @@ export default function Navbar() {
               >
                 <li>Orders</li>
               </NavLink>
+              <NavLink
+                className={({ isActive }) => {
+                  return ` relative before:h-[2px] hover:before:w-full before:transition-[width] before:duration-300 before:bg-primary before:absolute before:-bottom-0 ${
+                    isActive ? "font-bold before:w-full" : "before:w-0"
+                  }`;
+                }}
+                to="/wishlist"
+              >
+                <li>Wish List</li>
+              </NavLink>
             </ul>
           ) : (
             ""
@@ -160,22 +170,7 @@ export default function Navbar() {
                 className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700"
                 type="button"
               >
-                <i className="fa-solid fa-bars"></i>
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
+                <i className="fa-solid fa-bars text-xl"></i>
               </button>
               <div
                 id="dropdown"
@@ -236,6 +231,15 @@ export default function Navbar() {
                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Cart
+                    </NavLink>
+                  </li>
+
+                  <li className="text-xl">
+                    <NavLink
+                      to="/wishlist"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Wish List
                     </NavLink>
                   </li>
                 </ul>
