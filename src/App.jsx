@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import Layout from "./component/Layout/Layout";
 import Home from "./padg/Home/Home";
 import Regester from "./padg/Regester/Regester";
@@ -22,7 +22,7 @@ import ResetPassword from "./padg/ResetPassword/ResetPassword";
 import WishListProvider from "./context/wish.context";
 import WishList from "./padg/WishList/WishList";
 function App() {
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
       element: (

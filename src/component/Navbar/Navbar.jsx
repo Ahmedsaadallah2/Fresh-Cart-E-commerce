@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <>
       <nav className=" z-50 bg-slate-100 p-2 fixed left-0 right-0 top-0">
-        <div className="lg:container justify-between flex sm:flex gap-9 p-3 items-center">
+        <div className="lg:container justify-between flex gap-9 p-3 items-center">
           <div className="flex justify-between items-center">
             <h1>
               <img src={imageLogo} alt="Logo" />
@@ -135,7 +135,7 @@ export default function Navbar() {
             ""
           )}
 
-          {token ? (
+          {/* {token ? (
             <ul className="lg:flex gap-4 text-lg hidden">
               <i className="fa-brands fa-facebook"></i>
               <i className="fa-brands fa-twitter"></i>
@@ -153,7 +153,7 @@ export default function Navbar() {
               <i className="fa-brands fa-instagram"></i>
               <i className="fa-brands fa-tiktok"></i>
             </ul>
-          )}
+          )} */}
 
           <ul className="flex gap-5 text-lg items-center ms-auto md:ms-0">
             {!token ? (
