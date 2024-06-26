@@ -13,13 +13,42 @@ export default function Navbar() {
   return (
     <>
       <nav className=" z-50 bg-slate-100 p-2 fixed left-0 right-0 top-0">
-        <div className="container flex gap-9 p-3 items-center">
-          <h1>
-            <img src={imageLogo} alt="Logo" />
-          </h1>
-
+        <div className="lg:container justify-between flex sm:flex gap-9 p-3 items-center">
+          <div className="flex justify-between items-center">
+            <h1>
+              <img src={imageLogo} alt="Logo" />
+            </h1>
+            {token ? (
+              <button
+                data-collapse-toggle="navbar-default"
+                type="button"
+                className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-primary rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-700 border-2 border-gray-500 dark:focus:ring-gray-100"
+                aria-controls="navbar-default"
+                aria-expanded="false"
+              >
+                <span className="sr-only">Open main menu</span>
+                <svg
+                  className="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 17 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 1h15M1 7h15M1 13h15"
+                  />
+                </svg>
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
           {token ? (
-            <ul className=" md:flex hidden gap-7 items-center text-lg ">
+            <ul className="md:flex hidden gap-5 items-center text-md ">
               <NavLink
                 className={({ isActive }) => {
                   return ` relative before:h-[2px] hover:before:w-full before:transition-[width] before:duration-300 before:bg-primary before:absolute before:-bottom-0 ${
@@ -155,100 +184,95 @@ export default function Navbar() {
                 </li>
               </>
             ) : (
-              <li className="cursor-pointer">
+              <li className="cursor-pointer hidden md:inline">
                 <span onClick={logOut}>
                   <i className="fa-solid fa-right-from-bracket text-2xl"></i>
                 </span>
               </li>
             )}
           </ul>
-          {token ? (
-            <div className="md:hidden">
-              <button
-                id="dropdownDefaultButton"
-                data-dropdown-toggle="dropdown"
-                className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700"
-                type="button"
-              >
-                <i className="fa-solid fa-bars text-xl"></i>
-              </button>
-              <div
-                id="dropdown"
-                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-              >
-                <ul
-                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdownDefaultButton"
-                >
-                  <li className="text-xl">
-                    <NavLink
-                      to="/home"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Home
-                    </NavLink>
-                  </li>
-
-                  <li className="text-xl">
-                    <NavLink
-                      to="/products"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Products
-                    </NavLink>
-                  </li>
-
-                  <li className="text-xl">
-                    <NavLink
-                      to="/categories"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Categories
-                    </NavLink>
-                  </li>
-
-                  <li className="text-xl">
-                    <NavLink
-                      to="/brands"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Brands
-                    </NavLink>
-                  </li>
-
-                  <li className="text-xl">
-                    <NavLink
-                      to="/allorders"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Orders
-                    </NavLink>
-                  </li>
-
-                  <li className="text-xl">
-                    <NavLink
-                      to="/cart"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Cart
-                    </NavLink>
-                  </li>
-
-                  <li className="text-xl">
-                    <NavLink
-                      to="/wishlist"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Wish List
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
         </div>
+
+        {token ? (
+          <div className="md:hidden w-full block md:w-auto" id="navbar-default">
+            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-100 dark:border-gray-100">
+              <li>
+                <NavLink
+                  to={"/Home"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Home
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to={"/products"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Products
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to={"/categories"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Categories
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to={"/brands"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Brands
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to={"/allorders"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Orders
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to={"/wishlist"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Wish List
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to={"/cart"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Cart
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  onClick={logOut}
+                  to={"/"}
+                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Sign out
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
       </nav>
     </>
   );

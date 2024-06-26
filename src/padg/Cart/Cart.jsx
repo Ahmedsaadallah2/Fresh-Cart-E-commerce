@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { productContext } from "../../User.Context/product.context";
 import Loading from "../../component/Loading/Loading";
@@ -13,6 +13,10 @@ export default function Cart() {
         <title>Cart Info</title>
         <meta name="description" content="Cart component" />
       </Helmet>
+
+
+
+      
       {cartInfo === null ? (
         <Loading />
       ) : (
