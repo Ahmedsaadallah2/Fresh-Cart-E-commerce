@@ -24,7 +24,7 @@ export default function Brands() {
         <title>Brands</title>
         <meta name="description" content="Brands component" />
       </Helmet>
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-12 gap-4 mx-2 md:mx-0">
         {data.data.data.map((brands) => (
           <div
             key={brands._id}

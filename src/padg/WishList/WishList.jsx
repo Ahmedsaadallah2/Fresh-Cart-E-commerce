@@ -46,7 +46,7 @@ export default function WishList() {
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-12 gap-3">
+            <div className="grid grid-cols-12 gap-3 mx-2 md:mx-0">
               {wishInfo?.data.map((wishs) => (
                 <div
                   className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 2xl:col-span-2 mb-3 md:mb-0 rounded-lg overflow-hidden shadow-2xl"

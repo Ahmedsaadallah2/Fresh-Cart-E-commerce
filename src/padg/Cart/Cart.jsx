@@ -14,9 +14,6 @@ export default function Cart() {
         <meta name="description" content="Cart component" />
       </Helmet>
 
-
-
-      
       {cartInfo === null ? (
         <Loading />
       ) : (
@@ -120,7 +117,7 @@ export default function Cart() {
       )}
       <Link
         to="/checkout"
-        className="bg-primary py-2 px-3 mb-8 md:mb-0 text-white text-xl mt-5 ms-auto block w-fit rounded-lg"
+        className="bg-primary mr-4 md:mr-0 py-2 px-3 mb-8 md:mb-0 text-white text-xl mt-5 ms-auto block w-fit rounded-lg"
       >
         NEXT STEP
       </Link>

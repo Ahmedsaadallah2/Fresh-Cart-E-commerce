@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import imageLogo from "../../images/freshcart-logo.svg";
 import { userContext } from "../../User.Context/User.context";
@@ -6,7 +6,10 @@ import { productContext } from "../../User.Context/product.context";
 export default function Navbar() {
   const { token, logOut } = useContext(userContext);
   const { cartInfo, getCartProduct } = useContext(productContext);
-
+  const [isClick, setisClick] = useState(false);
+  const click = () => {
+    setisClick(!isClick);
+  };
   useEffect(() => {
     getCartProduct();
   }, []);
@@ -25,6 +28,7 @@ export default function Navbar() {
                 className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-primary rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-700 border-2 border-gray-500 dark:focus:ring-gray-100"
                 aria-controls="navbar-default"
                 aria-expanded="false"
+                onClick={click}
               >
                 <span className="sr-only">Open main menu</span>
                 <svg
@@ -48,7 +52,7 @@ export default function Navbar() {
             )}
           </div>
           {token ? (
-            <ul className="md:flex hidden gap-5 items-center text-md ">
+            <ul className="md:flex hidden gap-5 items-center text-md">
               <NavLink
                 className={({ isActive }) => {
                   return ` relative before:h-[2px] hover:before:w-full before:transition-[width] before:duration-300 before:bg-primary before:absolute before:-bottom-0 ${
@@ -135,26 +139,6 @@ export default function Navbar() {
             ""
           )}
 
-          {/* {token ? (
-            <ul className="lg:flex gap-4 text-lg hidden">
-              <i className="fa-brands fa-facebook"></i>
-              <i className="fa-brands fa-twitter"></i>
-              <i className="fa-brands fa-linkedin"></i>
-              <i className="fa-brands fa-youtube"></i>
-              <i className="fa-brands fa-instagram"></i>
-              <i className="fa-brands fa-tiktok"></i>
-            </ul>
-          ) : (
-            <ul className="lg:flex gap-4 text-lg hidden ms-auto">
-              <i className="fa-brands fa-facebook"></i>
-              <i className="fa-brands fa-twitter"></i>
-              <i className="fa-brands fa-linkedin"></i>
-              <i className="fa-brands fa-youtube"></i>
-              <i className="fa-brands fa-instagram"></i>
-              <i className="fa-brands fa-tiktok"></i>
-            </ul>
-          )} */}
-
           <ul className="flex gap-5 text-lg items-center ms-auto md:ms-0">
             {!token ? (
               <>
@@ -193,7 +177,7 @@ export default function Navbar() {
           </ul>
         </div>
 
-        {token ? (
+        {token && isClick ? (
           <div className="md:hidden w-full block md:w-auto" id="navbar-default">
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-100 dark:border-gray-100">
               <li>
@@ -253,9 +237,13 @@ export default function Navbar() {
               <li>
                 <NavLink
                   to={"/cart"}
-                  className="block py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="flex justify-between py-2 px-3 text-primary rounded hover:bg-primary md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0 dark:text-white md:dark:hover:text-primary dark:hover:bg-primary dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Cart
+                  <span>
+                    Cart
+                    <i className="ml-2 text-primary text-lg fa-solid fa-cart-shopping"></i>
+                  </span>
+                  {cartInfo.numOfCartItems || 0}
                 </NavLink>
               </li>
 
@@ -274,6 +262,7 @@ export default function Navbar() {
           ""
         )}
       </nav>
+      ;
     </>
   );
 }

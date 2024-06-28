@@ -30,7 +30,7 @@ export default function Home() {
       </Helmet>
       <SliderProduct />
       <SlideCategory />
-      <div className=" grid grid-cols-12 gap-6">
+      <div className=" grid grid-cols-12 gap-6 mx-2 md:mx-0">
         {data.data.data.map((product) => (
           <ProductCard productInfo={product} key={product._id} />
         ))}

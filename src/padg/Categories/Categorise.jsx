@@ -27,7 +27,7 @@ export default function Categorise() {
         <title>Caregories</title>
         <meta name="description" content="Caregories component" />
       </Helmet>
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-12 gap-3 mx-2 md:mx-0">
         {data.data.data.map((pro) => (
           <div
             key={pro._id}
